@@ -1,0 +1,162 @@
+.noFill {
+    fill:none;
+}
+body {
+    padding:80px 0 0 0;
+    background-color: #edf0f1;
+}
+header {
+    width: 100%;
+    height: 80px;
+    padding: 15px;
+    position: fixed;
+    background-color: #25b99a;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    box-shadow: 0px 2px 4px rgba(44,62,80,0.15);
+    z-index: 10;   
+    left: 0;
+    top: 0;
+}
+header input {
+    width: 100%;
+    height: 50px;
+    background: rgba(255,255,255,0.2);
+    text-indent: 18px;
+    font-size: 15px;
+    color: #fff;
+    border: 0;
+    outline: none;
+    padding: 0 60px 0 0;
+    border-radius: 10px 50px 50px 10px;
+    appearance: none;
+    float: left;
+}
+header::-webkit-input-placeholder {
+    color: rgba(255,255,255,0.25);
+}
+/*+号*/
+header button {
+    width:50px;
+    height: 50px;
+    border-radius: 50px;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    background-color: #fff;
+    border: 0;
+    outline: none;
+    appearance: none;
+    cursor: pointer;
+}
+header button svg {
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+}
+header button .fill {
+    fill: #25b99a;
+}
+/*文字部分*/
+.container {
+    padding: 15px 5px 5px 15px;
+}
+.container .todo {
+    position: relative;
+}
+.todo li {
+    min-height: 50px;
+    background-color: #fff;
+    line-height: 22px;
+    padding: 10px 44px 10px 10px;
+    font-size: 15px;
+    font-weight: 500;
+    position: relative;
+    margin-bottom: 10px;
+}
+.buttons {
+    height: 100%;
+    width: 100px;
+    position:absolute;
+    top: 0;
+    right: 0;
+}
+.buttons button {
+    height: 30px;
+    width: 30px;
+    border: 0;
+    outline: none;
+    appearance: none;
+    background: none;
+    position: absolute;
+    float:left;
+    cursor: pointer;
+    top: 50%;
+    transform:translateY(-50%);
+}
+.buttons svg {
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform:translate(-50%,-50%);
+}
+.buttons button:last-of-type {
+    border-radius: 50%;
+    border: 1px solid #25b99a;
+    right: 20px;
+}
+.buttons button:last-child::before{
+    content:"";
+    height:30px;
+    width: 1px;
+    background-color: #edf0f1;
+    position: absolute;
+    top:0;
+    left:-15px;
+
+}
+#todo .buttons button:last-of-type .fill {
+    fill: #25b99a;
+}
+#todo .buttons button:last-child:hover .fill {
+    fill: #fff;
+}
+#todo .buttons button:last-child:hover {
+    border-radius: 50%;
+    background-color: #25b99a;
+    transition: all 0.2s ease;
+    
+}
+.buttons button:first-child{
+    right: 70px
+}
+.buttons button:first-child:hover svg .fill{
+    fill: #e85656;
+}
+.buttons button:first-child svg .fill{
+    transition:fill 0.2s ease;
+}
+#complete .buttons button:last-child .fill {
+    fill: #fff;
+}
+#complete .buttons button:last-child {
+    background-color: #25b99a;
+}
+#complete {
+    margin: 60px 0 0 0;
+}
+#complete:not(empty)::before {
+    content:"";
+    width: 150px;
+    height: 1px;
+    background-color: #d8e5e0;
+    position: absolute;
+    left: 50%;
+    transform:translateX(-50%);
+    top: -30px;
+}
