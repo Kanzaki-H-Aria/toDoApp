@@ -1,22 +1,35 @@
 let bodyParser= require('body-parser');
 let urlencodeParser=bodyParser.urlencoded({extended:false});
+let mongoose= require('mongoose');
+mongoose.connect('mongodb://aria:zdx123@ds159782.mlab.com:59782/aria-data', {useNewUrlParser:true},function(err,db){
+    if(err) throw err;
+});
+let appSchema= new mongoose.Schema({
+    item:String
+});
+let appCollection=mongoose.model('appCollection',appSchema);
 
-let items=[{item:"这是第一条数据"},
-        {item:"这是第二条数据"},
-        {item:"这是第三条数据"}];
-
-
+console.log()
 module.exports=function(app){
     app.get('/todo',function(req,res){
-        res.render('todo',{items:items});
+        appCollection.find({},function(err,data){
+            if(err) throw err;
+            res.render('todo',{items:data})
+        });
     });
     
     app.post('/todo',urlencodeParser,function(req,res){
-        items.push(req.body);
+        appCollection(req.body).save(function(err,data){
+            if(err) throw err;
+            res.json('');
+        })
     });
 
-    app.delete('/todo',function(req,res){
-
+    app.delete('/todo/:item',urlencodeParser,function(req,res){
+        appCollection.find({item:req.params.item}).remove(function(err,data){
+            if(err) throw err;
+            res.json(data);
+        });
     });
 
 }
